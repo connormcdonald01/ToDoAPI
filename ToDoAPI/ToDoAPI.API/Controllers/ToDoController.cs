@@ -27,7 +27,13 @@ namespace ToDoAPI.API.Controllers
                 ToDoID = t.ToDoID,
                 Action = t.Action,
                 Done = t.Done,
-                CategoryID = t.CategoryID
+                CategoryID = t.CategoryID,
+                Category = new CategoryViewModel()
+                {
+                    CategoryID = t.CategoryID,
+                    Name = t.Category.Name,
+                    Description = t.Category.Description
+                }
 
             }).ToList<ToDoViewModel>();
 
@@ -52,6 +58,12 @@ namespace ToDoAPI.API.Controllers
                 Action = t.Action,
                 Done = t.Done,
                 CategoryID = t.CategoryID,
+                Category = new CategoryViewModel()
+                {
+                    CategoryID = t.CategoryID,
+                    Name = t.Category.Name,
+                    Description = t.Category.Description
+                }
             }).FirstOrDefault();
             //If we cannot find, pass a 404 error
             if (toDo == null)
